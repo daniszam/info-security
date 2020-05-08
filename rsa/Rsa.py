@@ -25,17 +25,9 @@ class RSA:
         data = int.from_bytes(message, 'big')
         return pow(data, self.public_key[0], self.public_key[1])
 
-    def encrypt_num(self, m):
-        return pow(m, self.public_key[0], self.public_key[1])
-
     def decrypt(self, cipher_text):
         number = pow(cipher_text, self.private_key[0], self.private_key[1])
         return number.to_bytes((number.bit_length() + 7) // 8, 'big')
-
-    def decrypt_num(self, m):
-        (d, n) = self.private_key
-        return pow(m, d, n)
-
 
 rsa = RSA()
 message = "Just testing"
