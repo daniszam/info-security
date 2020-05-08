@@ -23,7 +23,6 @@ class RSA:
 
     def encrypt(self, message):
         data = int.from_bytes(message, 'big')
-        print(data)
         return pow(data, self.public_key[0], self.public_key[1])
 
     def encrypt_num(self, m):
@@ -31,7 +30,6 @@ class RSA:
 
     def decrypt(self, cipher_text):
         number = pow(cipher_text, self.private_key[0], self.private_key[1])
-        print(number)
         return number.to_bytes((number.bit_length() + 7) // 8, 'big')
 
     def decrypt_num(self, m):
