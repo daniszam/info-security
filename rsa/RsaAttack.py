@@ -27,6 +27,6 @@ def RsaAttack(message, rsa_1: RSA, rsa_2: RSA, rsa_3: RSA):
 
 
 message = "Check"
-decrypt = RsaAttack(message.encode(), RSA(), RSA(), RSA())
+decrypt = RsaAttack(message.encode(), RSA(256), RSA(256), RSA(256))
 print(decrypt)
 

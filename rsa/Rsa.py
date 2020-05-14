@@ -7,13 +7,13 @@ from Crypto.Util.number import getPrime
 
 class RSA:
 
-    def __init__(self):
+    def __init__(self, key_size):
         e = 3
         t = 0
         n = 0
 
         while math.gcd(e, t) != 1:
-            p, q = getPrime(256), getPrime(256)
+            p, q = getPrime(key_size), getPrime(key_size)
             n = p * q
             t = (p - 1) * (q - 1) // math.gcd(p - 1, q - 1)
 
@@ -29,7 +29,7 @@ class RSA:
         number = pow(cipher_text, self.private_key[0], self.private_key[1])
         return number.to_bytes((number.bit_length() + 7) // 8, 'big')
 
-rsa = RSA()
+rsa = RSA(256)
 message = "Just testing"
 cipher_text = rsa.encrypt(message.encode())
 decrypter = rsa.decrypt(cipher_text)
